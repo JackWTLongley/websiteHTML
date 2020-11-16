@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="shortcut icon" href="js/data/mainIcon.ico" />
+		<title>Projects/Works</title>
+		<link rel="stylesheet" href="css/cssPage.css" type="text/css" media="screen,projection" />
+	</head>
+	<nav>
+		<ul>
+			<li><a href="courseworkLandingPage.html">Home</a></li>
+			<li><a href="courseworkModules.html">Modules/units of work</a></li>
+			<li><a class="isCurrent" href="courseworkProjects.html">Projects/Works</a></li>
+			<li><a href="courseworkVideoCapture.html">Video Capture</a></li>
+		</ul>
+	</nav>
+	<main>
+		<br>
+		<h1>Details about two projects/works I have Completed</h1> 
+		<br>
+		<body>
+			<section>
+				<h2>Seat Reservation System</h2>
+				<p>
+					This Project was to produce a seat reservation system to a design spec, it helped me work
+					on my programming development cycle skills along with skills in testing and debugging along with
+					report writing skills.
+				</p>
+				<button type=button id="speech" onclick='PGaudio()' style="width:200px";>Speak</button>
+				<script>
+					function PGaudio() {
+						//Creating a new speech synthesis instance with the text
+						var msg = new SpeechSynthesisUtterance("This Project was to produce a seat reservation system to a design spec, it helped me work on my programming development cycle skills along with skills in testing and debugging along with report writing skills.");
+						//Saying the text inside the msg instance
+						window.speechSynthesis.speak(msg);
+						
+					}
+				</script>
+				<!--Embedding a youtube video-->
+				<iframe src="https://www.youtube.com/embed/HluANRwPyNo"></iframe>
+				<!----------------------------->
+			</section>
+			<aside>
+				<h2>Computer Systems</h2>
+				<p>
+					We were tasked to design a circuit to take binary inputs and display a number on the counter. 
+					The counter needed to display the number 1 followed by 9 to indicate the current year the 
+					coursework was done. Then, this will be followed by your unique student ID number (person number).
+					This task taught me a lot about boolean algebra and circuit design, also giving me the knowlegdge on
+					the basics of the processor in the lectures.
+				</p>
+				<button type=button id="speech" onclick='CSaudio()' style="width:200px";>Speak</button>
+				<script>
+					function CSaudio() {
+						//Creating a new speech synthesis instance with the text
+						var msg = new SpeechSynthesisUtterance("We were tasked to design a circuit to take binary inputs and display a number on the counter. The counter needed to display the number 1 followed by 9 to indicate the current year the coursework was done. Then, this will be followed by your unique student ID number (person number).This task taught me a lot about boolean algebra and circuit design, also giving me the knowlegdge onthe basics of the processor in the lectures.");
+						//Saying the text inside the msg instance
+						window.speechSynthesis.speak(msg);
+					}
+				</script>
+				<!--Embedding a youtube video-->
+				<iframe src="https://www.youtube.com/embed/YlghuxGjHok"></iframe>
+				<!----------------------------->
+			</aside>
+		</body>
+		<footer>
+			<p>Created by: Jack Longley</p>
+			<p>Contact information: <a href="mailto:CMPJLON1@ljmu.ac.uk"> CMPJLON1@ljmu.ac.uk</a>.</p>
+		</footer>
+	</main>
+</html>
+		

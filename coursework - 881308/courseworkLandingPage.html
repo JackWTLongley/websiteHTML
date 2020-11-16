@@ -1,0 +1,133 @@
+<!DOCTYPE html> 
+<html>
+	<!--This document is the main commented peice, each page has comments about-->
+	<!--The unique features to that page, this is the masterpage as such.-->
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="shortcut icon" href="js/data/mainIcon.ico" />
+		<title>Landing Page</title>
+		<link rel="stylesheet" href="css/cssPage.css" type="text/css" media="screen,projection" />
+	</head>
+	<!--Creating a nav bar, using 'isCurrent' to show current page-->
+	<!--               This is the same on each page              -->
+	<nav>
+		<ul>
+			<li><a class="isCurrent" href="courseworkLandingPage.html">Home</a></li>
+			<li><a href="courseworkModules.html">Modules/units of work</a></li>
+			<li><a href="courseworkProjects.html">Projects/Works</a></li>
+			<li><a href="courseworkVideoCapture.html">Video Capture</a></li>
+		</ul>
+	</nav>
+	<!-------------------------------------------------------------->
+	<!--Commenting is the same on this page for each page-->
+	<main>
+		<br>
+		<!--Heading of the page-->
+		<h1>Brief Introduction About Me!</h1> 
+		<!----------------------->
+		<br>
+		<!--Body of the document, where most of the text is contained-->
+		<body>
+			<!--Section is used for the left side of the page-->
+			<section>			
+				<img src="js/data/me.jpg" alt="That's me!" style="width:300px; height:300px;">
+				<p>
+				<br>
+				Hello, my full name is Jack William-Thomas Longley, I'm 19 and turning 20 on November 4th. I'm from Ellesmere, Shropshire. But I was born in
+				Wrexham, Wales.<br>
+				I chose to do Computer Security because ever since I first got my hands on a computer, 
+				security of software and hacking in general has always interested me. Starting watching youtube videos 
+				and trying the scripts on laptops I had lying around was extremly fun.
+				</P>
+				<br>
+			</section>
+			<!------------------------------------------------->
+			<!--Aside is used for elements to the right of the page-->
+			<aside>
+				<!--Displays the slides and then calls the slide show script to change the photo every two seconds-->
+				<img class='continousSlides' src='js/data/Slide1.jpg' style='width:100%;height:100%;'>
+				<img class='continousSlides' src='js/data/Slide2.jpg' style='width:100%;height:100%;'>
+				<img class='continousSlides' src='js/data/Slide3.jpg' style='width:100%;height:100%;'>
+				<img class='continousSlides' src='js/data/Slide4.jpg' style='width:100%;height:100%;'>
+				<script src="js/slideShowScript.js"></script>
+			</aside>
+			<!-------------------------------------------------------->
+			<!--Article is for the elements under the section element-->
+			<article>
+				<!--Creates a table with the qualifications-->
+				<table>
+					<tr>
+						<th>Level</th>
+						<th>Qualification</th>
+						<th>Grade</th>
+						<th>Year</th>
+					</tr>
+					<tr>
+						<td>GCSE</td>
+						<td>Maths</td>
+						<td>7</td>
+						<td>2017</td>
+					</tr>
+					<tr>
+						<td>GCSE</td>
+						<td>English</td>
+						<td>5/5</td>
+						<td>2017</td>
+					</tr>
+					<tr>
+						<td>GCSE</td>
+						<td>History</td>
+						<td>C</td>
+						<td>2017</td>
+					</tr>
+					<tr>
+						<td>GCSE</td>
+						<td>Religious Studies</td>
+						<td>C</td>
+						<td>2017</td>
+					</tr>
+					<tr>
+						<td>GCSE</td>
+						<td>ICT</td>
+						<td>C</td>
+						<td>2017</td>
+					</tr>
+					<tr>
+						<td>GCSE</td>
+						<td>French</td>
+						<td>C</td>
+						<td>2017</td>
+					</tr>
+					<tr>
+						<td>A Level</td>
+						<td>Computer Science</td>
+						<td>C</td>
+						<td>2019</td>
+					</tr>
+					<tr>
+						<td>A Level</td>
+						<td>Electronics</td>
+						<td>D</td>
+						<td>2019</td>
+					</tr>
+					<tr>
+						<td>A Level</td>
+						<td>Law</td>
+						<td>D</td>
+						<td>2019</td>
+					</tr>
+				</table>
+				<!------------------------------------->
+				<br>
+			</article>
+		</body>
+		<!--------------------------------------------->
+		<!--Creates a footer that stays in the centre-->
+		<footer>
+			<p>Created by: Jack Longley</p>
+			<!--mailto opens an email app-->
+			<p>Contact information: <a href="mailto:CMPJLON1@ljmu.ac.uk"> CMPJLON1@ljmu.ac.uk</a>.</p>
+		</footer>
+		<!--------------------------------------------->
+	</main>
+</html>

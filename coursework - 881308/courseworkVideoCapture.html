@@ -1,0 +1,140 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="shortcut icon" href="js/data/mainIcon.ico" />
+		<title>Video Capture</title>
+		<link rel="stylesheet" href="css/cssPage.css" type="text/css" media="screen,projection" />
+	</head>
+	<nav>
+		<ul>
+			<li><a href="courseworkLandingPage.html">Home</a></li>
+			<li><a href="courseworkModules.html">Modules/units of work</a></li>
+			<li><a href="courseworkProjects.html">Projects/Works</a></li>
+			<li><a class="isCurrent" href="courseworkVideoCapture.html">Video Capture</a></li>
+		</ul>
+	</nav>
+	<main>
+		<br>
+		<h1>Video Capture</h1> 
+		<br>
+		<body>
+			<section>  
+				<div style="float:center">
+					<video autoplay id="vid1" /video>
+					<video id="vid2" muted="muted" style="display:block;"></video>
+				</div>
+				<div style="float:center">
+						<button type=button id="startVideo" onclick='getStream()' style="width:100px";>Start</button>
+						<button type=button id="stopVideo" onclick='stopRecorder()' style="width:100px" >Stop</button>
+						<button type=button id="download" onclick='download()' style="width:100px" >Download</button>
+				</div>
+				<script>
+					// script for recording Video and real time Uploading to server and local machine
+					
+					function getUserMedia(options, successCallback, failureCallback) {
+						var api = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+						navigator.mozGetUserMedia || navigator.msGetUserMedia;
+						if (api) {
+							return api.bind(navigator)(options, successCallback, failureCallback);
+						}
+						alert('User Media API not supported.');
+					}
+						
+					var theStream;
+					var theRecorder;
+					var recordedChunks = [];	
+					var mediaSource = new MediaSource();
+					var sourceBuffer;
+							
+					function getStream() {
+							
+						recordedChunks = [];
+						var vid2 = document.getElementById('vid2');
+						//  vid2.src = window.URL.createObjectURL(mediaSource);
+							
+						mediaSource.addEventListener('sourceopen', function (e) {
+							sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="opus,vp8"');
+						}, false);
+						// vid2.play();
+
+						var constraints = {									
+							
+							// video: { width: 1280, height: 720 }, audio: true
+							// video: { width: 384, height: 288 }, audio: true
+							video: true, audio: true
+						};
+							
+						getUserMedia(constraints, function (stream) {
+							var mediaControl = document.getElementById('vid1');
+							if (navigator.mozGetUserMedia) {
+								mediaControl.mozSrcObject = stream;
+								} else {
+								mediaControl.srcObject = stream;
+								// mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
+							}
+							
+							theStream = stream;
+							try {
+								recorder = new MediaRecorder(stream);
+								} catch (e) {
+								console.error('Exception while creating MediaRecorder: ' + e);
+								return;
+							}
+							theRecorder = recorder;
+							console.log('MediaRecorder created');
+							recorder.ondataavailable = recorderOnDataAvailable;
+							recorder.start(100);
+							}, function (err) {
+							alert('Error: ' + err);
+						});
+					}
+							
+					function recorderOnDataAvailable(event) {
+						if (event.data.size == 0) return;
+						recordedChunks.push(event.data);
+							
+						var reader = new FileReader();
+						reader.addEventListener("loadend", function () {
+							var arr = new Uint8Array(reader.result);
+							sourceBuffer.appendBuffer(arr);
+						});
+						reader.readAsArrayBuffer(event.data);
+					}
+							
+					////////////////////////////////////////// Download to user Device ////////////////////////////
+					function download() {
+						var fileName = "myVideo";
+						console.log('Saving data');
+						theRecorder.stop();
+						theStream.getTracks()[0].stop();
+				
+						var blob = new Blob(recordedChunks, { type: "video/webm" });
+						var url = (window.URL || window.webkitURL).createObjectURL(blob);
+						var a = document.createElement("a");
+						document.body.appendChild(a);
+						a.style = "display: none";
+						a.href = url;
+						a.download = fileName+".webm";
+						a.click();
+						
+						// setTimeout() here is needed for Firefox.
+						setTimeout(function () {
+							(window.URL || window.webkitURL).revokeObjectURL(url);
+						}, 100);
+					}
+							
+					function stopRecorder() {
+						theRecorder.stop();	
+					}
+							
+				</script>
+			</section>					
+		</body>
+		<footer>
+			<p>Created by: Jack Longley</p>
+			<p>Contact information: <a href="mailto:CMPJLON1@ljmu.ac.uk"> CMPJLON1@ljmu.ac.uk</a>.</p>
+		</footer>
+	</main>
+</html>
+		
